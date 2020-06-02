@@ -17,6 +17,7 @@ public class EntityGaiaNPCEnderGirl extends EntityMobMerchant {
 
 	public EntityGaiaNPCEnderGirl(World worldIn) {
 		super(worldIn);
+		this.setSize(0.6f, 1.98f);
 	}
 
 	@Override
@@ -61,5 +62,10 @@ public class EntityGaiaNPCEnderGirl extends EntityMobMerchant {
 		recipes.add(new GaiaTrade(new ItemStack(Items.STRING, 16, 0), ItemStack.EMPTY, new ItemStack(Items.ENDER_PEARL, 1, 0)));
 		recipes.add(new GaiaTrade(new ItemStack(Items.SLIME_BALL, 8, 0), ItemStack.EMPTY, new ItemStack(Items.ENDER_PEARL, 1, 0)));
 		recipes.add(new GaiaTrade(new ItemStack(Items.SPIDER_EYE, 8, 0), ItemStack.EMPTY, new ItemStack(Items.ENDER_PEARL, 1, 0)));
+	}
+
+	@Override
+	public float getEyeHeight() {
+		return this.height * 0.925f;
 	}
 }

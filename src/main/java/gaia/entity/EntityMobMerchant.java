@@ -278,4 +278,8 @@ public abstract class EntityMobMerchant extends EntityAgeable implements INpc, I
 	@Override
 	public EntityAgeable createChild(EntityAgeable ageable) { return null; }
 
+	@Override
+	public float getEyeHeight() {
+		return this.height * 0.85f;
+	}
 }
