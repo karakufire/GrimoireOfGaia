@@ -194,7 +194,7 @@ public abstract class EntityMobMerchant extends EntityAgeable implements INpc, I
 
 	@Override
 	protected void dropLoot(boolean wasRecentlyHit, int lootingModifier, DamageSource source) {
-		super.dropLoot(wasRecentlyHit, lootingModifier, source);
+//		super.dropLoot(wasRecentlyHit, lootingModifier, source);
 		dropFewItems(wasRecentlyHit, lootingModifier);
 	}
 
