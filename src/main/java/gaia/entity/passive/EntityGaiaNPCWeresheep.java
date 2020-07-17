@@ -8,7 +8,9 @@ import gaia.entity.monster.EntityGaiaDryad;
 import gaia.init.GaiaItems;
 import gaia.init.GaiaSounds;
 import net.minecraft.entity.IEntityLivingData;
+import net.minecraft.entity.ai.EntityAIAvoidEntity;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -41,6 +43,12 @@ public class EntityGaiaNPCWeresheep extends EntityMobMerchant {
 		super.entityInit();
 		dataManager.register(IS_SHEARED, false);
 		dataManager.register(DYE_COLOR, Integer.valueOf(EnumDyeColor.WHITE.getDyeDamage()));
+	}
+
+	@Override
+	protected void initEntityAI() {
+		super.initEntityAI();
+		this.tasks.addTask(1, new EntityAIAvoidEntity<EntityWolf>(this, EntityWolf.class, 8f, 0.6f, 0.6d));
 	}
 
 	@Override
@@ -156,7 +164,7 @@ public class EntityGaiaNPCWeresheep extends EntityMobMerchant {
 	public void readEntityFromNBT(NBTTagCompound compound) {
 		super.readEntityFromNBT(compound);
 		setSheared(compound.getBoolean("Sheared"));
-        
+
 		if (compound.hasKey("DyeColor", 99)) {
 			this.setDyeColor(EnumDyeColor.byDyeDamage(compound.getByte("DyeColor")));
 		}

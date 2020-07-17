@@ -4,6 +4,8 @@ import gaia.entity.EntityMobMerchant;
 import gaia.entity.GaiaTrade;
 import gaia.init.GaiaItems;
 import gaia.init.GaiaSounds;
+import net.minecraft.entity.ai.EntityAIAvoidEntity;
+import net.minecraft.entity.monster.EntityEndermite;
 import net.minecraft.init.Enchantments;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemArmor;
@@ -18,6 +20,12 @@ public class EntityGaiaNPCEnderGirl extends EntityMobMerchant {
 	public EntityGaiaNPCEnderGirl(World worldIn) {
 		super(worldIn);
 		this.setSize(0.6f, 1.98f);
+	}
+
+	@Override
+	protected void initEntityAI() {
+		tasks.addTask(1, new EntityAIAvoidEntity<EntityEndermite>(this, EntityEndermite.class, 8f, 0.6f, 0.6f));
+		super.initEntityAI();
 	}
 
 	@Override
